@@ -11,7 +11,8 @@
                     ('$_REQUEST[nombrecurso]')") 
         or die('Prolemas en el select'.mysqli_error($conexion));
 
-       
+        mysqli_close($conexion);
+        echo 'El curso fue dado de alta';
         ?>
     </body>
 </html>
