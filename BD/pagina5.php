@@ -29,7 +29,7 @@
             echo '<br>';
             echo '<br>';
         }
-        
+        mysqli_close($conexion);
         ?>
     </body>
 </html>
