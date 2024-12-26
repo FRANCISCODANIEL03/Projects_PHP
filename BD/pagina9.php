@@ -18,7 +18,7 @@
         }else{
             echo 'No existe un alumno con ese mail';
         }
-        
+        mysqli_close($conexion)
         ?>
     </body>
 </html>
