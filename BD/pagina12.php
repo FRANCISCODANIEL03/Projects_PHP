@@ -12,7 +12,7 @@
         or die('Problemas en el select: '.mysqli_error($conexion));
 
         echo 'El mail fue modificado con exito';
-        
+        mysqli_close($conexion);
         ?>
     </body>
 </html>
