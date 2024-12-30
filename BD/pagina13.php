@@ -17,7 +17,10 @@
                 $registros = mysqli_query($conexion, "SELECT codigo, nombrecurso FROM cursos") 
                 or die('Prolemas en el select'.mysqli_error($conexion));
 
-                
+                while($reg = mysqli_fetch_array($registros)){
+                    echo "<option value=\"$reg[codigo]\">$reg[nombrecurso]</option>";
+                }
+            
                 ?>
             </select>
             <br>
