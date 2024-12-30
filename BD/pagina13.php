@@ -14,6 +14,9 @@
                 $conexion = mysqli_connect('localhost', 'root', 'FRANCISCO031147', 'base1')
                 or die('Problemas con la conexion');
           
+                $registros = mysqli_query($conexion, "SELECT codigo, nombrecurso FROM cursos") 
+                or die('Prolemas en el select'.mysqli_error($conexion));
+
                 
                 ?>
             </select>
