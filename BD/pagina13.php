@@ -20,7 +20,7 @@
                 while($reg = mysqli_fetch_array($registros)){
                     echo "<option value=\"$reg[codigo]\">$reg[nombrecurso]</option>";
                 }
-            
+                mysqli_close($conexion);
                 ?>
             </select>
             <br>
