@@ -11,7 +11,7 @@
             Seleccione el curso:
             <select name="codigocurso">
                 <?php
-                $conexion = mysqli_connect('localhost', 'root', 'FRANCISCO031147', 'base1')
+                $conexion = mysqli_connect('host', 'user', 'password', 'base')
                 or die('Problemas con la conexion');
           
                 $registros = mysqli_query($conexion, "SELECT codigo, nombrecurso FROM cursos") 
