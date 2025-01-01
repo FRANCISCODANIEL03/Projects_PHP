@@ -12,7 +12,7 @@
         or die('Problemas en el select: '. mysqli_error($conexion));
         echo 'El alumno fue dado de alta';
         
-    
+        mysqli_close($conexion);
         ?>
 
     </body>
