@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+    <h1>Registro Familiar</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+       
+    </form>
+    
 </body>
 <script>
     if(window.history.replaceState){
