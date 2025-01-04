@@ -27,11 +27,40 @@
             $conexion = mysqli_connect('host', 'user', 'password', 'base')
             or die('Problemas con la conexión');
 
-          
+            if (isset($_REQUEST['registrar'])) {
+                // Verificar si se selecciono un archivo
+                $ruta = "imgs/perfil.jpg"; // Si no se sube una foto, insertar una predeterminada
+                $extensiones = array(0=>'image/jpg', 1=>'image/jpeg', 2=>'image/png', 3=>'image/webp', 4=>NULL);
+                
+                // Obtener los datos del formulario
+                $nombre = $_REQUEST['nombre']; 
+                $parentesco = $_REQUEST['parentesco']; 
+                // Verificar si se ingresaron datos
+                if(!$nombre || !$parentesco){
+                    echo "<h3 id=\"err\">Alguna celda esta vacia</h3>";
+                }else{
+                    if(in_array($_FILES['foto']['type'], $extensiones)){
+                        if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+                            $foto = $_FILES['foto']['name']; // Nombre del archivo
+                            $foto_tmp = $_FILES['foto']['tmp_name']; // Ruta temporal del archivo
+                            $ruta = "imgs/" . $foto; // Ruta final donde se guardará el archivo
+                            move_uploaded_file($foto_tmp, $ruta); // Mover el archivo a la carpeta "imgs"
+                        } 
+                        mysqli_query($conexion, "INSERT familia (nombre, parentesco, foto) VALUES ('$nombre',
+                         '$parentesco', '$ruta')")
+                        or die('Problemas en el INSERT: ' . mysqli_error($conexion));
+                    
+                        echo "<h3>Familiar registrado exitosamente</h3>";
+                       
+                    } else{
+                        echo "<h3 id=\"err\">El formato de archivo ingresado no es compatible</h3>";
+                    }
+                }
+            } 
             ?>
         </div>
     </form>
-    
+   
 </body>
 <script>
     if(window.history.replaceState){
