@@ -21,7 +21,15 @@
         <button type="submit" name="actualizar">Actualizar</button>
         <button type="submit" name="eliminar">Eliminar</button>
         <button id="mostrar">Mostrar Listado</button>
-        
+        <div>
+        <?php
+            // Conexion a la base de datos
+            $conexion = mysqli_connect('host', 'user', 'password', 'base')
+            or die('Problemas con la conexión');
+
+          
+            ?>
+        </div>
     </form>
     
 </body>
