@@ -9,7 +9,19 @@
 <body>
     <h1>Registro Familiar</h1>
     <form action="" method="POST" enctype="multipart/form-data">
-       
+        <label>Id: </label>
+        <input type="text" name="id" id="id">
+        <label>Nombre: </label>
+        <input type="text" name="nombre" id="nombre">
+        <label>Parentesco: </label>
+        <input type="text" name="parentesco" id="parentesco">
+        <label>Foto: </label>
+        <input type="file" name="foto" id="foto">
+        <button type="submit" name="registrar">Registrar</button>
+        <button type="submit" name="actualizar">Actualizar</button>
+        <button type="submit" name="eliminar">Eliminar</button>
+        <button id="mostrar">Mostrar Listado</button>
+        
     </form>
     
 </body>
