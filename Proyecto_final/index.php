@@ -56,11 +56,33 @@
                         echo "<h3 id=\"err\">El formato de archivo ingresado no es compatible</h3>";
                     }
                 }
+            } elseif (isset($_REQUEST['eliminar'])) {
+                $id = $_REQUEST['id'];
+                $registros = mysqli_query($conexion, "SELECT id FROM familia") 
+                or die('Problemas en el select'. mysqli_error($conexion));
+                $ids = []; // Array para almacenar los IDs
+                while ($row = mysqli_fetch_assoc($registros)) {
+                    $ids[] = $row['id']; // Almacenar cada ID en el array
+                }      
+                if(!$id){
+                    echo "<h3 id=\"err\">Celda ID vacia</h3>";
+                } else{  
+                    settype($id, 'int');
+                    if(in_array($id, $ids)){
+
+                        mysqli_query($conexion, "DELETE FROM familia WHERE id = $id")
+                        or die('Problemas en el INSERT: ' . mysqli_error($conexion));
+
+                        echo "<h3>Familiar eliminado</h3>";
+                    } else{
+                        echo "<h3 id=\"err\">El ID ingresado no existe en los registros</h3>";
+                    }
+                }
             } 
             ?>
         </div>
     </form>
-   
+    
 </body>
 <script>
     if(window.history.replaceState){
