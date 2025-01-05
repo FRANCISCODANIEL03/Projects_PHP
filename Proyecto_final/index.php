@@ -78,7 +78,52 @@
                         echo "<h3 id=\"err\">El ID ingresado no existe en los registros</h3>";
                     }
                 }
-            } 
+            } elseif (isset($_REQUEST['actualizar'])) {
+                $nombre = $_REQUEST['nombre'];
+                $parentesco = $_REQUEST['parentesco'];
+                $id = $_REQUEST['id'];
+                $extensiones = array(0=>'image/jpg', 1=>'image/jpeg', 2=>'image/png', 3=>'image/webp', 4=>NULL);
+                $registros = mysqli_query($conexion, "SELECT id FROM familia") 
+                or die('Problemas en el select'. mysqli_error($conexion));
+                
+                $ids = []; // Array para almacenar los IDs
+                while ($row = mysqli_fetch_assoc($registros)) {
+                    $ids[] = $row['id']; // Almacenar cada ID en el array
+                }
+                
+                if(!$nombre || !$parentesco || !$id){
+                    echo "<h3 id=\"err\">Alguna celda esta vacia</h3>";
+                } else{
+                    settype($id, 'int');
+                    if(in_array($id, $ids)){
+                        if(in_array($_FILES['foto']['type'], $extensiones)){
+
+                            if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+                            $foto = $_FILES['foto']['name']; // Nombre del archivo
+                            $foto_tmp = $_FILES['foto']['tmp_name']; // Ruta temporal del archivo
+                            $ruta = "imgs/" . $foto; // Ruta final donde se guardara el archivo
+                            move_uploaded_file($foto_tmp, $ruta); // Mover el archivo a la carpeta "imgs"
+
+                            mysqli_query($conexion, "UPDATE familia SET nombre = '$nombre', parentesco =
+                             '$parentesco', foto = '$ruta' WHERE id = $id")
+                            or die('Problemas en el INSERT: ' . mysqli_error($conexion));
+                            } else {
+                            mysqli_query($conexion, "UPDATE familia SET nombre = '$nombre', parentesco = 
+                            '$parentesco' WHERE id = $id")
+                            or die('Problemas en el INSERT: ' . mysqli_error($conexion));
+                            }
+
+                            echo "<h3>Familar actualizado correctamente</h3>";
+
+                           
+                        } else{
+                            echo "<h3 id=\"err\">El formato de archivo ingresado no es compatible</h3>";
+                        }
+                    } else{
+                        echo "<h3 id=\"err\">El ID ingresado no existe en los registros</h3>";
+                    }
+                }
+            }
             ?>
         </div>
     </form>
