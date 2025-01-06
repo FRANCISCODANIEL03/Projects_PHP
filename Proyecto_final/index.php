@@ -124,6 +124,8 @@
                     }
                 }
             }
+             // Cerrar conexion
+             mysqli_close($conexion);
             ?>
         </div>
     </form>
