@@ -141,7 +141,12 @@
                 </tr>
             </thead>
             <tbody>
-                
+                <?php
+                    $conexion = mysqli_connect('host', 'user', 'password', 'base')
+                    or die('Problemas con la conexion');
+                    
+                    
+                ?>
             </tbody>
         </table>
     </div>
