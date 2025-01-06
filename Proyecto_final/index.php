@@ -129,7 +129,22 @@
             ?>
         </div>
     </form>
-    
+    <div id="table_list" style="display:none">
+        <h2>Listado Familiar</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Parentesco</th>
+                    <th>Foto</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
 </body>
 <script>
     if(window.history.replaceState){
