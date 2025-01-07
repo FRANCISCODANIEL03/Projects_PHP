@@ -148,6 +148,12 @@
                     $registros = mysqli_query($conexion, "SELECT id, nombre, parentesco, foto FROM familia") 
                     or die('Problemas en el select'.mysqli_error($conexion));
                     
+                    while($reg = mysqli_fetch_array($registros)){
+                        echo "<tr><td>$reg[id]</td>
+                        <td>$reg[nombre]</td>
+                        <td>$reg[parentesco]</td>
+                        <td><img src=\"$reg[foto]\"></td></tr>";
+                    }
                     
                     
                 ?>
