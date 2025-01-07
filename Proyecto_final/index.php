@@ -154,7 +154,8 @@
                         <td>$reg[parentesco]</td>
                         <td><img src=\"$reg[foto]\"></td></tr>";
                     }
-                    
+                    // Cerrar conexion
+                    mysqli_close($conexion);
                     
                 ?>
             </tbody>
