@@ -18,3 +18,10 @@ label {
     display: block;
     margin: 10px 0 5px;
 }
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+}
