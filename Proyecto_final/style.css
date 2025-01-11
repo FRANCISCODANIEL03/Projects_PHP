@@ -40,3 +40,8 @@ button {
 button:hover {
     background-color: #357bbd;
 }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
