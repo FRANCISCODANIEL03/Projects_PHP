@@ -53,3 +53,7 @@ th {
     background-color: #1e1e2f;
     color: #4aa3f0;
 }
+td img {
+    width: 100px;
+    border-radius: 8px;
+}
